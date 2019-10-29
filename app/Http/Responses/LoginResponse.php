@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Responses;
+namespace App\Http\Responses;
 use App\Core\ResponseBase;
 
 class LoginResponse extends ResponseBase
