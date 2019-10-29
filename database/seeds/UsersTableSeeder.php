@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Eloquent\User;
+use App\Enums\UserStatusEnum;
 
 class UsersTableSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class UsersTableSeeder extends Seeder
 			'email' => 'joshuawieczorek@outlook.com',
 			'phone' => '561-332-5055',
 			'password' => Hash::make('Pa$$word1'),
-		    'status' => 1
+		    'status' => UserStatusEnum::Active
 	    ]);
 
 	    $ed = User::create([
@@ -28,7 +29,7 @@ class UsersTableSeeder extends Seeder
 		    'email' => 'shoutofvictory@me.com',
 		    'phone' => '561-346-4495',
 		    'password' => Hash::make('Pa$$word1'),
-		    'status' => 1
+		    'status' => UserStatusEnum::Active
 	    ]);
 
 	    $jw->roles()->sync([1]);

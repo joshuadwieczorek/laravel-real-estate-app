@@ -63,12 +63,13 @@ class AuthServiceProvider implements AuthServiceProviderContract
 					$userAttemptCreds = [
 						'email' => $credentials->email,
 						'password' => $credentials->password,
-						'status' => 1
+						'status' => UserStatusEnum::Active
 					];
 
 					if(Auth::attempt($userAttemptCreds))
 					{
 						$this->_Log($user->id, $user->status, 'User logged in!');
+						$this->_userRepository->UpdateLastLogin($user);
 					}
 					else
 					{

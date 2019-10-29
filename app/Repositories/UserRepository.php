@@ -18,7 +18,7 @@ class UserRepository implements UserRepositoryContract
 	public function FindByEmail(string $email): ?User
 	{
 		return User::where('email', $email)
-			->where('status', 1)
+			->where('status', UserStatusEnum::Active)
 			->first();
 	}
 
