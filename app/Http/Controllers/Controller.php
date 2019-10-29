@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Throwable;
 use Exception;
 use App\Core\ResponseBase;
+use App\Http\Responses\ApiResponse;
 use App\Exceptions\UserAuthenticationException;
 
 class Controller extends BaseController
@@ -37,12 +38,13 @@ class Controller extends BaseController
 
 				if(request()->wantsJson())
 				{
-					// Prepare the JSON data.
-					$data = $this->_JsonData($didWork->Data(), $didWork->Message(), $didWork->StatusCode());
-
 					// Return the JSON response.
 					return response()
-						->json($data, $didWork->StatusCode());
+						->json(
+							(new ApiResponse($didWork->Data()))
+								->ToArray($didWork->Message(), $didWork->StatusCode())
+							, $didWork->StatusCode()
+						);
 				}
 
 				// Otherwise return the view.
@@ -56,7 +58,10 @@ class Controller extends BaseController
 	    {
 		    if(request()->wantsJson())
 			    return response()
-				    ->json($this->_JsonData([], 'Unauthenticated request!', 401), 401);
+				    ->json(
+				    	(new ApiResponse([]))
+					        ->ToArray('Unauthenticated request!', 401)
+				    );
 
 		    return redirect('/login');
 	    }
@@ -64,7 +69,11 @@ class Controller extends BaseController
 	    {
 	    	if(request()->wantsJson())
 	    		return response()
-				    ->json($this->_JsonData([], 'Internal server error!', 500), 500);
+				    ->json(
+					    (new ApiResponse([]))
+						    ->ToArray('Unauthenticated request!', 500)
+		                    , 500
+				    );
 
 	    	return view('errors.500');
 	    }

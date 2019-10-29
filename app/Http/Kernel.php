@@ -36,13 +36,15 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 	        \App\Http\Middleware\AuthAttemptsExceeded::class,
-	        'request.data.converter'
+	        'request.data.validator',
+	        'request.data.converter',
         ],
 
         'api' => [
             'throttle:60,1',
             'bindings',
-	        'request.data.converter'
+	        'request.data.validator',
+	        'request.data.converter',
         ],
     ];
 
@@ -65,6 +67,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 	    'request.data.converter' => \App\Http\Middleware\RequestDataModelConverter::class,
+        'request.data.validator' => \App\Http\Middleware\RequestDataValidator::class,
     ];
 
     /**

@@ -12,6 +12,7 @@ class LoginResponse extends ResponseBase
 	{
 		$this->_view = 'auth.login';
 		$this->_data = [];
+		$this->_message = 'Successful login!';
 	}
 
 	/**

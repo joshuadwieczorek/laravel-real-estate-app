@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/login', [
 	'uses' => 'Auth\LoginController@Login',
 	'name' => 'api.post.login',
-	'data.model' => 'CredentialsModel'
+	'data.model' => 'CredentialsModel',
+	'data.validator' => 'CredentialsValidator'
 ]);
