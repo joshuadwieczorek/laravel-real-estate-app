@@ -78,23 +78,4 @@ class Controller extends BaseController
 	    	return view('errors.500');
 	    }
     }
-
-
-	/**
-	 * Prepare JSON data for API response.
-	 *
-	 * @param array $data
-	 * @param string $message
-	 * @param int $statusCode
-	 *
-	 * @return array
-	 */
-    private function _JsonData(?array $data, string $message, int $statusCode) : array
-    {
-    	return [
-			'status' => $statusCode,
-		    'message' => $message,
-		    'data' => $data ?? []
-	    ];
-    }
 }
