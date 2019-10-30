@@ -30,4 +30,15 @@ class Listing extends Model
 		'title', 'description', 'price', 'purchase_rent', 'bedrooms', 'bathrooms', 'square_feet',
 		'address1', 'address2', 'city', 'state', 'zip', 'listing_agent', 'details', 'active'
 	];
+
+
+	/**
+	 * The listing's images.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function images()
+	{
+		return $this->hasMany(ListingImage::class, 'listing_id', 'id');
+	}
 }

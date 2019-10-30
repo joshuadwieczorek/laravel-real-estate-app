@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01a18c97-0b1b-4349-8b9f-e33712455934" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/Eloquent/Listing.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Eloquent/Listing.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ListingModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ListingModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/UserRegisterModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserRegisterModel.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,10 +19,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Eloquent/Listing.php">
+        <entry file="file://$PROJECT_DIR$/app/Models/ListingModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="499">
+              <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
+              <folding>
+                <element signature="e#29#57#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,8 +93,8 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_10_29_194939_create_listings_images_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_29_194903_create_listings_table.php" />
         <option value="$PROJECT_DIR$/app/Eloquent/ListingImage.php" />
-        <option value="$PROJECT_DIR$/app/Eloquent/Listing.php" />
         <option value="$PROJECT_DIR$/app/Models/UserRegisterModel.php" />
+        <option value="$PROJECT_DIR$/app/Eloquent/Listing.php" />
         <option value="$PROJECT_DIR$/app/Models/ListingModel.php" />
       </list>
     </option>
@@ -313,12 +318,12 @@
       <updated>1572134907836</updated>
       <workItem from="1572134909226" duration="1617000" />
       <workItem from="1572179389095" duration="12568000" />
-      <workItem from="1572313084101" duration="5273000" />
+      <workItem from="1572313084101" duration="5469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19458000" />
+    <option name="totallyTimeSpent" value="19654000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -726,20 +731,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/ListingModel.php">
+    <entry file="file://$PROJECT_DIR$/app/Eloquent/Listing.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-          <folding>
-            <element signature="e#29#57#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="861">
+          <caret line="41" column="71" lean-forward="true" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Eloquent/Listing.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/ListingModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="499">
+          <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
+          <folding>
+            <element signature="e#29#57#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

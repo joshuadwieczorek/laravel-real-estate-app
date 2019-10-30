@@ -21,6 +21,7 @@ class ListingModel implements DataModelContract
 	public $listingAgent;
 	public $details;
 	public $active;
+	public $images = [];
 
 	/**
 	 * Convert request to data model.
