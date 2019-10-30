@@ -2,6 +2,7 @@
 
 namespace App\ServiceProviders;
 
-class ListingsServiceProvider {
+class ListingsServiceProvider
+{
 
 }

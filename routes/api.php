@@ -30,6 +30,11 @@ Route::get('/listings', [
 	'name' => 'listings.index'
 ]);
 
+Route::get('/listings/all', [
+	'uses' => 'ListingsController@all',
+	'name' => 'listings.index'
+]);
+
 Route::get('/listings/{id}', [
 	'uses' => 'ListingsController@show',
 	'name' => 'listings.show'

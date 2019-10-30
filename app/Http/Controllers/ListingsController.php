@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Contracts\ServiceProviders\ListingsServiceProviderContract;
 
 class ListingsController extends Controller
 {
 	/**
-	 * ListingsController constructor.
+	 * Listings service provider.
+	 *
+	 * @var ListingsServiceProviderContract
 	 */
-	public function __construct()
-	{
+	private $_listingProvider;
 
+
+	/**
+	 * ListingsController constructor.
+	 *
+	 * @param ListingsServiceProviderContract $listingProvider
+	 */
+	public function __construct(ListingsServiceProviderContract $listingProvider)
+	{
+		$this->_listingProvider = $listingProvider;
 	}
 
 
@@ -19,11 +30,26 @@ class ListingsController extends Controller
 	 * GET : /listings
 	 *
 	 * @param Request $request
-	 * @param int $id
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
 	 */
 	public function index(Request $request)
+	{
+		return $this->Response(function() use($request) {
+
+		});
+	}
+
+
+	/**
+	 * View : none
+	 * GET : /listings/none
+	 *
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
+	 */
+	public function all(Request $request)
 	{
 		return $this->Response(function() use($request) {
 

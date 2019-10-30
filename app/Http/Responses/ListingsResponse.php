@@ -2,14 +2,28 @@
 
 namespace App\Http\Responses;
 use App\Core\ResponseBase;
-use App\Eloquent\Listing;
 use App\Models\ListingModel;
-use App\Models\ListingImageModel;
+use Illuminate\Support\Collection;
 
-class ListingsAllResponse extends ResponseBase
+class ListingsResponse extends ResponseBase
 {
+	/**
+	 * Listings.
+	 *
+	 * @var Collection|null
+	 */
+	private $_listings;
 
-	
+
+	/**
+	 * ListingsResponse constructor.
+	 *
+	 * @param Collection|null $listings
+	 */
+	public function __construct(?Collection $listings)
+	{
+		$this->_listings = $listings;
+	}
 
 
 	/**
@@ -19,6 +33,17 @@ class ListingsAllResponse extends ResponseBase
 	 */
 	public function Prepare()
 	{
-		// TODO: Implement Prepare() method.
+		$this->_data = [];
+
+		if($this->_listings != null)
+		{
+			foreach($this->_listings as $listing)
+			{
+				$this->_data[] = (new ListingModel())->FromEntity($listing);
+			}
+		}
+		else
+			$this->_statusCode = 202;
+
 	}
 }

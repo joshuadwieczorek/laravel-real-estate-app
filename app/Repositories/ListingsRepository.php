@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
-class ListingsRepository {
+class ListingsRepository
+{
 
 }

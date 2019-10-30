@@ -2,6 +2,14 @@
 
 namespace App\Contracts;
 
-class DataModelFromEntityContract {
-
+interface DataModelFromEntityContract
+{
+	/**
+	 * Convert entity to model.
+	 *
+	 * @param $entity
+	 *
+	 * @return mixed
+	 */
+	public function FromEntity($entity);
 }

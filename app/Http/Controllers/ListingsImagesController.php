@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Contracts\ServiceProviders\ListingsServiceProviderContract;
 
 class ListingsImagesController extends Controller
 {
 	/**
-	 * ListingsImagesController constructor.
+	 * Listings service provider.
+	 *
+	 * @var ListingsServiceProviderContract
 	 */
-	public function __construct()
-	{
+	private $_listingProvider;
 
+
+	/**
+	 * ListingsImagesController constructor.
+	 *
+	 * @param ListingsServiceProviderContract $listingProvider
+	 */
+	public function __construct(ListingsServiceProviderContract $listingProvider)
+	{
+		$this->_listingProvider = $listingProvider;
 	}
 
 
