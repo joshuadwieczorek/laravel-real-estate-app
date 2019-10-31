@@ -44,6 +44,7 @@ Route::post('/listings', [
 	'uses' => 'Api\ListingsController@create',
 	'name' => 'api.listings.create',
 	'data.model' => 'ListingModel',
+	'data.validator' => 'ListingValidator'
 ]);
 
 Route::put('/update/{id}', [

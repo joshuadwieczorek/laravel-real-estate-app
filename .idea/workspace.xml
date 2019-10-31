@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01a18c97-0b1b-4349-8b9f-e33712455934" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Responses/ListingResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pages/listings-index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Validators/ListingValidator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Contracts/Repositories/ListingsRepositoryContract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Contracts/Repositories/ListingsRepositoryContract.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Contracts/ServiceProviders/ListingsServiceProviderContract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Contracts/ServiceProviders/ListingsServiceProviderContract.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Core/ResponseBase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Core/ResponseBase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ListingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ListingsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Responses/ApiResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Responses/ApiResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Responses/ListingsResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Responses/ListingsResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ListingModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ListingModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/ListingsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ListingsRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ServiceProviders/ListingsServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ServiceProviders/ListingsServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_29_194903_create_listings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_29_194903_create_listings_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,14 +62,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Models/ListingModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
+            <state relative-caret-position="1365">
               <caret line="65" column="43" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
               <folding>
                 <element signature="e#29#57#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Validators/ListingValidator.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+              <folding>
+                <element signature="e#33#67#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/api.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="46" column="41" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -114,7 +122,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Contracts/DataModelContract.php" />
         <option value="$PROJECT_DIR$/app/Models/CredentialsModel.php" />
         <option value="$PROJECT_DIR$/app/Models/UserLogModel.php" />
         <option value="$PROJECT_DIR$/app/Contracts/Repositories/UserLogsRepositoryContract.php" />
@@ -152,7 +159,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ListingsController.php" />
         <option value="$PROJECT_DIR$/app/ServiceProviders/AuthServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_29_194903_create_listings_table.php" />
         <option value="$PROJECT_DIR$/app/Core/ResponseBase.php" />
         <option value="$PROJECT_DIR$/app/Http/Responses/ApiResponse.php" />
@@ -165,6 +171,8 @@
         <option value="$PROJECT_DIR$/app/Contracts/Repositories/ListingsRepositoryContract.php" />
         <option value="$PROJECT_DIR$/app/ServiceProviders/ListingsServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Models/ListingModel.php" />
+        <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/app/Validators/ListingValidator.php" />
       </list>
     </option>
   </component>
@@ -304,55 +312,7 @@
               <item name="real-estate-laravel" type="b2602c69:ProjectViewProjectNode" />
               <item name="real-estate-laravel" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="real-estate-laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="real-estate-laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="real-estate-laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="real-estate-laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="real-estate-laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="real-estate-laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Auth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="real-estate-laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="real-estate-laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Responses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="real-estate-laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="real-estate-laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="real-estate-laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="real-estate-laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Repositories" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="real-estate-laravel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="real-estate-laravel" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="ServiceProviders" type="462c0819:PsiDirectoryNode" />
+              <item name="Validators" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="real-estate-laravel" type="b2602c69:ProjectViewProjectNode" />
@@ -401,6 +361,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Validators" />
       <recent name="$PROJECT_DIR$/app/Http/Responses" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -439,12 +400,12 @@
       <updated>1572134907836</updated>
       <workItem from="1572134909226" duration="1617000" />
       <workItem from="1572179389095" duration="12568000" />
-      <workItem from="1572313084101" duration="14675000" />
+      <workItem from="1572313084101" duration="15443000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28860000" />
+    <option name="totallyTimeSpent" value="29628000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -476,23 +437,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Http/Request.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="203" column="20" selection-start-line="203" selection-start-column="20" selection-end-line="203" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Eloquent/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="40" lean-forward="true" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-          <folding>
-            <element signature="e#32#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -753,13 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="43" column="44" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Eloquent/Listing.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
@@ -874,10 +811,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/ListingModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
+        <state relative-caret-position="1365">
           <caret line="65" column="43" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
           <folding>
             <element signature="e#29#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Validation/Rule.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-423">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="46" column="41" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Validators/ListingValidator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+          <folding>
+            <element signature="e#33#67#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
