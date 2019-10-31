@@ -42,11 +42,12 @@ interface ListingsRepositoryContract
 	/**
 	 * Update listing.
 	 *
+	 * @param int $id
 	 * @param ListingModel $model
 	 *
 	 * @return Listing
 	 */
-	public function Update(ListingModel $model) : Listing;
+	public function Update(int $id, ListingModel $model) : Listing;
 
 	/**
 	 * Soft-delete listing.

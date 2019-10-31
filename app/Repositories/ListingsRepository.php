@@ -3,6 +3,7 @@
 namespace App\Repositories;
 use App\Contracts\Repositories\ListingsRepositoryContract;
 use App\Eloquent\Listing;
+use App\Exceptions\ValidationException;
 use App\Models\ListingModel;
 use Illuminate\Support\Collection;
 
@@ -77,13 +78,40 @@ class ListingsRepository implements ListingsRepositoryContract
 	/**
 	 * Update listing.
 	 *
+	 * @param int $id
 	 * @param ListingModel $model
 	 *
 	 * @return Listing
+	 * @throws ValidationException
 	 */
-	public function Update(ListingModel $model): Listing
+	public function Update(int $id, ListingModel $model): Listing
 	{
-		// TODO: Implement Update() method.
+		$listing = $this->GetSingle($id);
+
+		if($listing != null)
+		{
+			$listing->fill([
+				'title' => $model->title,
+				'description' => $model->description,
+				'price' => $model->price,
+				'purchase_rent' => $model->purchaseRent,
+				'bedrooms' => $model->bedrooms,
+				'bathrooms' => $model->bathrooms,
+				'square_feet' => $model->squareFeet,
+				'address1' => $model->address1,
+				'address2' => $model->address2,
+				'city' => $model->city,
+				'state' => $model->state,
+				'zip' => $model->zip,
+				'listing_agent' => $model->listingAgent,
+				'details' => $model->details,
+			]);
+			$listing->save();
+			$listing->refresh();
+			return $listing;
+		}
+		else
+			throw new ValidationException("Listing not found by id '$id'!");
 	}
 
 

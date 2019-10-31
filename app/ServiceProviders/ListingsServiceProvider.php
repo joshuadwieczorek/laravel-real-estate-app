@@ -88,7 +88,7 @@ class ListingsServiceProvider implements ListingsServiceProviderContract
 	 */
 	public function Update(int $id, ListingModel $listing): Listing
 	{
-		return $this->_listingsRepository->Update($listing);
+		return $this->_listingsRepository->Update($id, $listing);
 	}
 
 

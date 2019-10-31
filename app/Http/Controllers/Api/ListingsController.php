@@ -107,7 +107,8 @@ class ListingsController extends Controller
 	{
 		return $this->Response(function() use($request, $id) {
 			$model = $request->request->get('data.model');
-			return $this->_listingProvider->Update($id, $model);
+			$data = $this->_listingProvider->Update($id, $model);
+			return new ListingResponse($data);
 		});
 	}
 

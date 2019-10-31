@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Exceptions\ValidationException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -63,13 +64,25 @@ class Controller extends BaseController
 				    ->json(
 				    	(new ApiResponse([]))
 					        ->ToArray('Unauthenticated request!', 401)
+					    ,   401
 				    );
 
 		    return redirect('/login');
 	    }
+	    catch (ValidationException $validationException)
+	    {
+		    if(request()->wantsJson())
+			    return response()
+				    ->json(
+					    (new ApiResponse([]))
+						    ->ToArray($validationException->getMessage(), 400)
+					    ,   400
+				    );
+
+		    return back()->with(['error' => $validationException->getMessage()]);
+	    }
 	    catch (Throwable $exception)
 	    {
-	    	dd($exception->getMessage());
 	    	if(request()->wantsJson())
 	    		return response()
 				    ->json(

@@ -47,9 +47,11 @@ Route::post('/listings', [
 	'data.validator' => 'ListingValidator'
 ]);
 
-Route::put('/update/{id}', [
+Route::put('/listings/{id}', [
 	'uses' => 'Api\ListingsController@update',
-	'name' => 'api.listings.update'
+	'name' => 'api.listings.update',
+	'data.model' => 'ListingModel',
+	'data.validator' => 'ListingValidator'
 ]);
 
 Route::delete('/delete/{id}', [
