@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
 		UserLogsRepositoryContract::class => UserLogsRepository::class,
 		UserRepositoryContract::class => UserRepository::class,
 		AuthServiceProviderContract::class => AuthServiceProvider::class,
-		ListingsServiceProviderContract::class, ListingsServiceProvider::class,
+		ListingsServiceProviderContract::class => ListingsServiceProvider::class,
 		ListingsRepositoryContract::class => ListingsRepository::class,
 	];
 

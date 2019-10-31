@@ -15,9 +15,9 @@ class ApiResponse
 	/**
 	 * ApiResponse constructor.
 	 *
-	 * @param array $data
+	 * @param $data
 	 */
-	public function __construct(?array $data)
+	public function __construct($data)
 	{
 		$this->_data = $data;
 	}

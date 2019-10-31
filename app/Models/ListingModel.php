@@ -7,6 +7,7 @@ use App\Contracts\DataModelFromEntityContract;
 
 class ListingModel implements DataModelContract, DataModelFromEntityContract
 {
+	public $id;
 	public $title;
 	public $description;
 	public $price;
@@ -61,20 +62,21 @@ class ListingModel implements DataModelContract, DataModelFromEntityContract
 	 */
 	public function FromEntity($entity)
 	{
-		$this->title = $entity->title;
-		$this->description = $entity->description;
-		$this->price = $entity->price;
-		$this->purchaseRent = $entity->purchase_rent;
-		$this->bedrooms = $entity->bedrooms;
-		$this->bathrooms = $entity->bathrooms;
-		$this->squareFeet = $entity->square_feet;
-		$this->address1 = $entity->address1;
-		$this->address2 = $entity->address2;
-		$this->city = $entity->city;
-		$this->state = $entity->state;
-		$this->zip = $entity->zip;
-		$this->listingAgent = $entity->listing_agent;
-		$this->details = $entity->details;
+		$this->id = $entity->id;
+		$this->title = $entity->title ?? '';
+		$this->description = $entity->description ?? '';
+		$this->price = $entity->price ?? '';
+		$this->purchaseRent = $entity->purchase_rent ?? '';
+		$this->bedrooms = $entity->bedrooms ?? '';
+		$this->bathrooms = $entity->bathrooms ?? '';
+		$this->squareFeet = $entity->square_feet ?? '';
+		$this->address1 = $entity->address1 ?? '';
+		$this->address2 = $entity->address2 ?? '';
+		$this->city = $entity->city ?? '';
+		$this->state = $entity->state ?? '';
+		$this->zip = $entity->zip ?? '';
+		$this->listingAgent = $entity->listing_agent ?? '';
+		$this->details = $entity->details ?? '';
 		$this->active = $entity->active;
 
 		if($entity->images != null && $entity->images->count() > 0)

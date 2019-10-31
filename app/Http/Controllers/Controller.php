@@ -30,6 +30,9 @@ class Controller extends BaseController
 	    	// Process the data.
 			$didWork = $work();
 
+			if($didWork == null && request()->wantsJson())
+				return response(null, 204);
+
 			if($didWork instanceof ResponseBase)
 			{
 				// Prepare the response.
@@ -66,11 +69,12 @@ class Controller extends BaseController
 	    }
 	    catch (Throwable $exception)
 	    {
+	    	dd($exception->getMessage());
 	    	if(request()->wantsJson())
 	    		return response()
 				    ->json(
 					    (new ApiResponse([]))
-						    ->ToArray('Unauthenticated request!', 500)
+						    ->ToArray('Internal server error!', 500)
 		                    , 500
 				    );
 

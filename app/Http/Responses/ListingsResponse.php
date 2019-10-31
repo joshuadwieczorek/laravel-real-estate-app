@@ -23,6 +23,7 @@ class ListingsResponse extends ResponseBase
 	public function __construct(?Collection $listings)
 	{
 		$this->_listings = $listings;
+		$this->_view = 'listings.listings-index';
 	}
 
 

@@ -41,7 +41,7 @@ abstract class ResponseBase
 	 *
 	 * @return mixed
 	 */
-	public function Data() : ?array
+	public function Data()
 	{
 		return $this->_data;
 	}

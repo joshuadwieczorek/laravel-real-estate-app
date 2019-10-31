@@ -26,57 +26,58 @@ Route::post('/login', [
 
 
 Route::get('/listings', [
-	'uses' => 'ListingsController@index',
-	'name' => 'listings.index'
+	'uses' => 'Api\ListingsController@get',
+	'name' => 'api.listings.get'
 ]);
 
 Route::get('/listings/all', [
-	'uses' => 'ListingsController@all',
-	'name' => 'listings.index'
+	'uses' => 'Api\ListingsController@all',
+	'name' => 'api.listings.all'
 ]);
 
 Route::get('/listings/{id}', [
-	'uses' => 'ListingsController@show',
-	'name' => 'listings.show'
+	'uses' => 'Api\ListingsController@getSingle',
+	'name' => 'api.listings.show'
 ]);
 
 Route::post('/listings', [
-	'uses' => 'ListingsController@create',
-	'name' => 'listings.create'
+	'uses' => 'Api\ListingsController@create',
+	'name' => 'api.listings.create',
+	'data.model' => 'ListingModel',
 ]);
 
 Route::put('/update/{id}', [
-	'uses' => 'ListingsController@update',
-	'name' => 'listings.update'
+	'uses' => 'Api\ListingsController@update',
+	'name' => 'api.listings.update'
 ]);
 
 Route::delete('/delete/{id}', [
-	'uses' => 'ListingsController@delete',
-	'name' => 'listings.delete'
+	'uses' => 'Api\ListingsController@delete',
+	'name' => 'api.listings.delete'
 ]);
 
 
 Route::get('/listings{listingId}/images', [
-	'uses' => 'ListingsImagesController@index',
-	'name' => 'listings.images.index'
+	'uses' => 'Api\ListingsImagesController@index',
+	'name' => 'api.listings.images.get'
 ]);
 
 Route::get('/listings/{listingId}/images/{id}', [
-	'uses' => 'ListingsImagesController@show',
-	'name' => 'listings.images.show'
+	'uses' => 'Api\ListingsImagesController@show',
+	'name' => 'api.listings.images.show'
 ]);
 
 Route::post('/listings/{listingId}/images', [
-	'uses' => 'ListingsImagesController@create',
-	'name' => 'listings.images.create'
+	'uses' => 'Api\ListingsImagesController@create',
+	'name' => 'api.listings.images.create'
 ]);
 
 Route::put('/update/{listingId}/images/{id}', [
-	'uses' => 'ListingsImagesController@update',
-	'name' => 'listings.images.update'
+	'uses' => 'Api\ListingsImagesController@update',
+	'name' => 'api.listings.images.update'
 ]);
 
 Route::delete('/delete/{listingId}/images/{id}', [
-	'uses' => 'ListingsImagesController@delete',
-	'name' => 'listings.images.delete'
+	'uses' => 'Api\ListingsImagesController@delete',
+	'name' => 'api.listings.images.delete'
 ]);

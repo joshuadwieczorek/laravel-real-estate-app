@@ -32,7 +32,7 @@ interface ListingsServiceProviderContract
 	 *
 	 * @return Listing
 	 */
-	public function GetSingle(int $id) : Listing;
+	public function GetSingle(int $id) : ?Listing;
 
 
 	/**

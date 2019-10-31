@@ -17,7 +17,7 @@ class CreateListingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
 	        $table->string('description');
-	        $table->float('price')->default(0.00);
+	        $table->float('price', '18')->default(0.00);
 	        $table->enum('purchase_rent', ['purchase', 'rent']);
 	        $table->tinyInteger('bedrooms')->default(0);
 	        $table->tinyInteger('bathrooms')->default(0);
@@ -26,7 +26,7 @@ class CreateListingsTable extends Migration
 	        $table->string('address2')->nullable();
 	        $table->string('city')->nullable();
 	        $table->string('state')->nullable();
-	        $table->smallInteger('zip')->nullable();
+	        $table->integer('zip')->nullable();
 	        $table->string('listing_agent')->nullable();
 	        $table->text('details')->nullable();
 	        $table->boolean('active')->default(0);
