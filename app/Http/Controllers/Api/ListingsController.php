@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+use App\Exceptions\UserAuthorizationException;
 use App\Http\Controllers\Controller;
 use App\Http\Responses\ListingResponse;
 use App\Http\Responses\ListingsResponse;
 use Illuminate\Http\Request;
 use App\Contracts\ServiceProviders\ListingsServiceProviderContract;
+use Illuminate\Support\Facades\Gate;
 
 class ListingsController extends Controller
 {
@@ -53,9 +55,15 @@ class ListingsController extends Controller
 	 */
 	public function all(Request $request)
 	{
-		return $this->Response(function() use($request) {
-			$data = $this->_listingProvider->GetAll();
-			return new ListingsResponse($data);
+		return $this->Response(function() use($request)
+		{
+			if(Gate::allows('user-admin'))
+			{
+				$data = $this->_listingProvider->GetAll();
+				return new ListingsResponse($data);
+			}
+
+			throw new UserAuthorizationException('Unauthenticated request!');
 		});
 	}
 
@@ -87,10 +95,15 @@ class ListingsController extends Controller
 	 */
 	public function create(Request $request)
 	{
-		return $this->Response(function() use($request) {
-			$model = $request->request->get('data.model');
-			$data = $this->_listingProvider->Create($model);
-			return new ListingResponse($data);
+		return $this->Response(function() use($request)
+		{
+			if(Gate::allows('user-admin'))
+			{
+				$model = $request->request->get('data.model');
+				$data = $this->_listingProvider->Create($model);
+				return new ListingResponse($data);
+			}
+			throw new UserAuthorizationException('Unauthenticated request!');
 		});
 	}
 
@@ -105,10 +118,16 @@ class ListingsController extends Controller
 	 */
 	public function update(Request $request, int $id)
 	{
-		return $this->Response(function() use($request, $id) {
-			$model = $request->request->get('data.model');
-			$data = $this->_listingProvider->Update($id, $model);
-			return new ListingResponse($data);
+		return $this->Response(function() use($request, $id)
+		{
+			if(Gate::allows('user-admin'))
+			{
+				$model = $request->request->get('data.model');
+				$data = $this->_listingProvider->Update($id, $model);
+				return new ListingResponse($data);
+			}
+
+			throw new UserAuthorizationException('Unauthenticated request!');
 		});
 	}
 
@@ -123,9 +142,15 @@ class ListingsController extends Controller
 	 */
 	public function delete(Request $request, int $id)
 	{
-		return $this->Response(function() use($request, $id) {
-			$this->_listingProvider->Delete($id);
-			return null;
+		return $this->Response(function() use($request, $id)
+		{
+			if(Gate::allows('user-admin'))
+			{
+				$this->_listingProvider->Delete($id);
+				return null;
+			}
+
+			throw new UserAuthenticationException('Unauthenticated request!');
 		});
 	}
 }

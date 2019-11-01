@@ -54,7 +54,7 @@ Route::put('/listings/{id}', [
 	'data.validator' => 'ListingValidator'
 ]);
 
-Route::delete('/delete/{id}', [
+Route::delete('/listings/{id}', [
 	'uses' => 'Api\ListingsController@delete',
 	'name' => 'api.listings.delete'
 ]);

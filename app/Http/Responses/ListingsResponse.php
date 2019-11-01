@@ -36,7 +36,7 @@ class ListingsResponse extends ResponseBase
 	{
 		$this->_data = [];
 
-		if($this->_listings != null)
+		if($this->_listings != null && $this->_listings->count() > 0)
 		{
 			foreach($this->_listings as $listing)
 			{
@@ -44,7 +44,7 @@ class ListingsResponse extends ResponseBase
 			}
 		}
 		else
-			$this->_statusCode = 202;
+			$this->_statusCode = 204;
 
 	}
 }

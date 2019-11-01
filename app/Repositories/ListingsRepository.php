@@ -121,9 +121,18 @@ class ListingsRepository implements ListingsRepositoryContract
 	 * @param int $id
 	 *
 	 * @return void
+	 * @throws ValidationException
 	 */
 	public function Delete(int $id): void
 	{
-		// TODO: Implement Delete() method.
+		$listing = $this->GetSingle($id);
+
+		if($listing != null)
+		{
+			$listing->active = 0;
+			$listing->save();
+		}
+		else
+			throw new ValidationException("Listing not found by id '$id'!");
 	}
 }

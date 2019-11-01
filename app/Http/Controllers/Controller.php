@@ -11,6 +11,7 @@ use Exception;
 use App\Core\ResponseBase;
 use App\Http\Responses\ApiResponse;
 use App\Exceptions\UserAuthenticationException;
+use App\Exceptions\UserAuthorizationException;
 
 class Controller extends BaseController
 {
@@ -65,6 +66,18 @@ class Controller extends BaseController
 				    	(new ApiResponse([]))
 					        ->ToArray('Unauthenticated request!', 401)
 					    ,   401
+				    );
+
+		    return redirect('/login');
+	    }
+	    catch (UserAuthorizationException $exception)
+	    {
+		    if(request()->wantsJson())
+			    return response()
+				    ->json(
+					    (new ApiResponse([]))
+						    ->ToArray('Unauthorized request!', 403)
+					    ,   403
 				    );
 
 		    return redirect('/login');

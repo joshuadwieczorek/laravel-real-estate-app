@@ -64,4 +64,15 @@ class User extends Authenticatable
 
         return false;
     }
+
+
+	/**
+	 * User's token.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+    public function tokens()
+    {
+    	return $this->hasMany(Token::class, 'user_id', 'id');
+    }
 }

@@ -36,6 +36,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 	        \App\Http\Middleware\AuthAttemptsExceeded::class,
+	        \App\Http\Middleware\ApiTokenGenerator::class,
 	        'request.data.validator',
 	        'request.data.converter',
         ],
@@ -43,6 +44,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
+	        \App\Http\Middleware\ApiTokenValidator::class,
 	        'request.data.validator',
 	        'request.data.converter',
         ],
