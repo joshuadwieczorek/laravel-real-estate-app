@@ -17,8 +17,10 @@ class CreateListingsImagesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('listing_id');
             $table->string('url');
-	        $table->string('title')->nullable();
+	        $table->string('path');
+	        $table->string('title');
 	        $table->string('alt')->nullable();
+	        $table->string('caption')->nullable();
             $table->timestamps();
         });
 

@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('/login', [
 	'uses' => 'Auth\LoginController@Login',
 	'name' => 'api.post.login',
@@ -60,27 +56,29 @@ Route::delete('/listings/{id}', [
 ]);
 
 
-Route::get('/listings{listingId}/images', [
-	'uses' => 'Api\ListingsImagesController@index',
+Route::get('/listings/{listingId}/images', [
+	'uses' => 'Api\ListingsImagesController@get',
 	'name' => 'api.listings.images.get'
 ]);
 
 Route::get('/listings/{listingId}/images/{id}', [
-	'uses' => 'Api\ListingsImagesController@show',
+	'uses' => 'Api\ListingsImagesController@getSingle',
 	'name' => 'api.listings.images.show'
 ]);
 
 Route::post('/listings/{listingId}/images', [
 	'uses' => 'Api\ListingsImagesController@create',
-	'name' => 'api.listings.images.create'
+	'name' => 'api.listings.images.create',
+	'data.model' => 'ListingImageModel',
+	'data.validator' => 'ListingImageValidator'
 ]);
 
-Route::put('/update/{listingId}/images/{id}', [
+Route::put('/listings/{listingId}/images/{id}', [
 	'uses' => 'Api\ListingsImagesController@update',
-	'name' => 'api.listings.images.update'
+	'data.model' => 'ListingImageModel',
 ]);
 
-Route::delete('/delete/{listingId}/images/{id}', [
+Route::delete('/listings/{listingId}/images/{id}', [
 	'uses' => 'Api\ListingsImagesController@delete',
 	'name' => 'api.listings.images.delete'
 ]);

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Api;
 use App\Exceptions\UserAuthorizationException;
 use App\Http\Controllers\Controller;
-use App\Http\Responses\ListingResponse;
-use App\Http\Responses\ListingsResponse;
+use App\Http\Responses\ListingImageResponse;
+use App\Http\Responses\ListingImagesResponse;
 use Illuminate\Http\Request;
 use App\Contracts\ServiceProviders\ListingsServiceProviderContract;
 use Illuminate\Support\Facades\Gate;
 
-class ListingsController extends Controller
+class ListingsImagesController extends Controller
 {
 	/**
 	 * Listings service provider.
@@ -31,39 +31,18 @@ class ListingsController extends Controller
 
 
 	/**
-	 * GET : /api/listings
+	 * GET : /api/listings/{listingId}/images
 	 *
 	 * @param Request $request
+	 * @param int $listingId
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
 	 */
-	public function get(Request $request)
+	public function get(Request $request, int $listingId)
 	{
-		return $this->Response(function() use($request) {
-			$data = $this->_listingProvider->Get();
-			return new ListingsResponse($data);
-		});
-	}
-
-
-	/**
-	 * GET : /api/listings
-	 *
-	 * @param Request $request
-	 *
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
-	 */
-	public function all(Request $request)
-	{
-		return $this->Response(function() use($request)
-		{
-			if(Gate::allows('user-admin'))
-			{
-				$data = $this->_listingProvider->GetAll();
-				return new ListingsResponse($data);
-			}
-
-			throw new UserAuthorizationException('Unauthorized request!');
+		return $this->Response(function() use($request, $listingId) {
+			$data = $this->_listingProvider->ImageGet($listingId);
+			return new ListingImagesResponse($data);
 		});
 	}
 
@@ -73,15 +52,16 @@ class ListingsController extends Controller
 	 * GET : /api/listings/{id}
 	 *
 	 * @param Request $request
+	 * @param int $listingId
 	 * @param int $id
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
 	 */
-	public function getSingle(Request $request, int $id)
+	public function getSingle(Request $request, int $listingId, int $id)
 	{
-		return $this->Response(function() use($request, $id) {
-			$data = $this->_listingProvider->GetSingle($id);
-			return new ListingResponse($data);
+		return $this->Response(function() use($request, $listingId, $id) {
+			$data = $this->_listingProvider->ImageGetSingle($listingId, $id);
+			return new ListingImageResponse($data);
 		});
 	}
 
@@ -89,19 +69,20 @@ class ListingsController extends Controller
 	/**
 	 * POST : /api/listings
 	 *
+	 * @param int $listingId
 	 * @param Request $request
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
 	 */
-	public function create(Request $request)
+	public function create(Request $request, int $listingId)
 	{
-		return $this->Response(function() use($request)
+		return $this->Response(function() use($listingId, $request)
 		{
 			if(Gate::allows('user-admin'))
 			{
 				$model = $request->request->get('data.model');
-				$data = $this->_listingProvider->Create($model);
-				return new ListingResponse($data);
+				$data = $this->_listingProvider->ImageCreate($listingId, $model);
+				return new ListingImageResponse($data);
 			}
 			throw new UserAuthorizationException('Unauthorized request!');
 		});
@@ -109,22 +90,25 @@ class ListingsController extends Controller
 
 
 	/**
-	 * PUT : /api/listings/{id}
+	 * PUT : /api/listings/{listingId}/images/{id}
 	 *
 	 * @param Request $request
+	 * @param int $listingId
 	 * @param int $id
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
 	 */
-	public function update(Request $request, int $id)
+	public function update(Request $request, int $listingId, int $id)
 	{
-		return $this->Response(function() use($request, $id)
+		return $this->Response(function() use($request, $listingId, $id)
 		{
 			if(Gate::allows('user-admin'))
 			{
 				$model = $request->request->get('data.model');
-				$data = $this->_listingProvider->Update($id, $model);
-				return new ListingResponse($data);
+				$model->id = $id;
+				$model->listingId = $listingId;
+				$data = $this->_listingProvider->ImageUpdate($listingId, $model);
+				return new ListingImageResponse($data);
 			}
 
 			throw new UserAuthorizationException('Unauthorized request!');
@@ -133,20 +117,21 @@ class ListingsController extends Controller
 
 
 	/**
-	 * DELETE : /api/listings/{id}
+	 * DELETE : /api/listings/{listingId}/images/{id}
 	 *
 	 * @param Request $request
+	 * @param int $listingId
 	 * @param int $id
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
 	 */
-	public function delete(Request $request, int $id)
+	public function delete(Request $request, int $listingId, int $id)
 	{
-		return $this->Response(function() use($request, $id)
+		return $this->Response(function() use($request, $listingId, $id)
 		{
 			if(Gate::allows('user-admin'))
 			{
-				$this->_listingProvider->Delete($id);
+				$this->_listingProvider->ImageDelete($listingId, $id);
 				return null;
 			}
 

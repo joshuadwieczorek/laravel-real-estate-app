@@ -27,6 +27,6 @@ class ListingImage extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'listing_id', 'url', 'title', 'alt'
+		'listing_id', 'url', 'path', 'title', 'alt', 'caption'
 	];
 }

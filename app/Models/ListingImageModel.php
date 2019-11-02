@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Http\Request;
 use App\Contracts\DataModelContract;
 use App\Contracts\DataModelFromEntityContract;
+use Illuminate\Http\UploadedFile;
 
 class ListingImageModel implements DataModelContract, DataModelFromEntityContract
 {
@@ -12,6 +13,8 @@ class ListingImageModel implements DataModelContract, DataModelFromEntityContrac
 	public $url;
 	public $title;
 	public $alt;
+	public $caption;
+	private $_file;
 
 
 	/**
@@ -23,9 +26,10 @@ class ListingImageModel implements DataModelContract, DataModelFromEntityContrac
 	 */
 	public function FromRequest(Request $request)
 	{
-		$this->url = $request->input('url');
 		$this->title = $request->input('title');
 		$this->alt = $request->input('alt');
+		$this->caption = $request->input('caption');
+		$this->_file = $request->file('image');
 		return $this;
 	}
 
@@ -43,7 +47,19 @@ class ListingImageModel implements DataModelContract, DataModelFromEntityContrac
 		$this->listingId = $entity->listing_id;
 		$this->url = $entity->url;
 		$this->title = $entity->title;
-		$this->alt = $entity->alt;
+		$this->alt = $entity->alt ?? '';
+		$this->caption = $entity->caption ?? '';
 		return $this;
+	}
+
+
+	/**
+	 * Get uploaded file.
+	 *
+	 * @return UploadedFile
+	 */
+	public function GetFile() : UploadedFile
+	{
+		return $this->_file;
 	}
 }

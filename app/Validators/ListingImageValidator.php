@@ -4,7 +4,7 @@ namespace App\Validators;
 use App\Core\RequestValidatorBase;
 use Illuminate\Validation\Rule;
 
-class ListingValidator extends RequestValidatorBase {
+class ListingImageValidator extends RequestValidatorBase {
 
 	/**
 	 * Array of validation rules.
@@ -15,12 +15,8 @@ class ListingValidator extends RequestValidatorBase {
 	{
 		return [
 			'title' => 'required|min:2|max:50',
-			'price' => 'required|regex:/^\d*(\.\d{2})?$/',
-			'purchaseRent' => Rule::in(['purchase', 'rent']),
-			'bedrooms' => 'required|numeric',
-			'bathrooms' => 'required|numeric',
-			'squareFeet' => 'required|numeric',
-			'zip' => 'numeric',
+			'image' => 'required|image',
+			'alt' => 'string',
 		];
 	}
 
@@ -34,7 +30,8 @@ class ListingValidator extends RequestValidatorBase {
 	{
 		return [
 			'title.required' => 'Listing title is required!',
-			'price.required' => 'Listing price is required!',
+			'image.required' => 'Image file is required!',
+			'image.image' => 'Image is invalid file type!',
 		];
 	}
 }

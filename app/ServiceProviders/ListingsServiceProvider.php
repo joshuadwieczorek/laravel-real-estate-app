@@ -4,6 +4,7 @@ namespace App\ServiceProviders;
 use App\Contracts\ServiceProviders\ListingsServiceProviderContract;
 use App\Eloquent\Listing;
 use App\Eloquent\ListingImage;
+use App\Exceptions\ValidationException;
 use App\Models\ListingImageModel;
 use App\Models\ListingModel;
 use Illuminate\Support\Collection;
@@ -111,10 +112,18 @@ class ListingsServiceProvider implements ListingsServiceProviderContract
 	 * @param int $listingId
 	 *
 	 * @return Collection|null
+	 * @throws ValidationException
 	 */
 	public function ImageGet(int $listingId): ?Collection
 	{
-		// TODO: Implement ImageGet() method.
+		$listing = $this->_listingsRepository->GetSingle($listingId);
+
+		if($listing != null)
+		{
+			return collect($listing->images->all());
+		}
+
+		throw new ValidationException("Listing not found by id '$listingId'!");
 	}
 
 
@@ -125,10 +134,18 @@ class ListingsServiceProvider implements ListingsServiceProviderContract
 	 * @param int $id
 	 *
 	 * @return Collection|null
+	 * @throws ValidationException
 	 */
 	public function ImageGetSingle(int $listingId, int $id): ?ListingImage
 	{
-		// TODO: Implement ImageGetSingle() method.
+		$listing = $this->_listingsRepository->GetSingle($listingId);
+
+		if($listing != null)
+		{
+			return $listing->images()->find($id);
+		}
+
+		throw new ValidationException("Listing not found by id '$listingId'!");
 	}
 
 
@@ -138,11 +155,46 @@ class ListingsServiceProvider implements ListingsServiceProviderContract
 	 * @param int $listingId
 	 * @param ListingImageModel $image
 	 *
-	 * @return ListingImage|null
+	 * @return ListingImage
+	 * @throws ValidationException
 	 */
 	public function ImageCreate(int $listingId, ListingImageModel $image): ListingImage
 	{
-		// TODO: Implement ImageCreate() method.
+		$listing = $this->_listingsRepository->GetSingle($listingId);
+
+		if($listing != null)
+		{
+			// Create paths and names.
+			$storagePath = env('UPLOAD_FILES_PATH') . DIRECTORY_SEPARATOR . $listingId;
+			$filePathRoot = public_path($storagePath);
+			$fileName = str_replace(' ', '-', $image->GetFile()->getClientOriginalName());
+			$fullFilePath = $storagePath . DIRECTORY_SEPARATOR . $fileName;
+
+			// Make directory for files if not exists.
+			if(!file_exists($filePathRoot))
+			{
+				mkdir($filePathRoot);
+			}
+
+			if(file_exists($fullFilePath))
+				throw new ValidationException("Image already exists '$fileName'!");
+
+			// Save the file to disk.
+			$fileContents = file_get_contents($image->GetFile()->getRealPath());
+			file_put_contents($fullFilePath, $fileContents);
+
+			$listingImage = $listing->images()->create([
+				'listing_id' => $listingId,
+				'title' => $image->title,
+				'alt' => $image->alt,
+				'url' => url($fullFilePath),
+				'path' => public_path($fullFilePath)
+			]);
+
+			return $listingImage;
+		}
+
+		throw new ValidationException("Listing not found by id '$listingId'!");
 	}
 
 
@@ -153,10 +205,30 @@ class ListingsServiceProvider implements ListingsServiceProviderContract
 	 * @param ListingImageModel $image
 	 *
 	 * @return ListingImage
+	 * @throws ValidationException
 	 */
 	public function ImageUpdate(int $listingId, ListingImageModel $image): ListingImage
 	{
-		// TODO: Implement ImageUpdate() method.
+		$listingImage = $this->ImageGetSingle($listingId, $image->id);
+
+		if($listingImage != null)
+		{
+			if($image->title != null)
+				$listingImage->title = $image->title;
+
+			if($image->alt != null)
+				$listingImage->alt = $image->alt;
+
+			if($image->caption != null)
+				$listingImage->caption = $image->caption;
+
+			$listingImage->save();
+			$listingImage->refresh();
+
+			return $listingImage;
+		}
+
+		throw new ValidationException('Image not found!');
 	}
 
 
@@ -165,9 +237,20 @@ class ListingsServiceProvider implements ListingsServiceProviderContract
 	 *
 	 * @param int $listingId
 	 * @param int $id
+	 *
+	 * @throws ValidationException
 	 */
 	public function ImageDelete(int $listingId, int $id): void
 	{
-		// TODO: Implement ImageDelete() method.
+		$listingImage = $this->ImageGetSingle($listingId, $id);
+
+		if($listingImage != null)
+		{
+			unlink($listingImage->path);
+			$listingImage->delete();
+			return;
+		}
+
+		throw new ValidationException('Image not found!');
 	}
 }

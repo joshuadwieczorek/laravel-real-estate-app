@@ -37,6 +37,6 @@ class ListingResponse extends ResponseBase
 			$this->_data = (new ListingModel())->FromEntity($this->_listing);
 		}
 		else
-			$this->_statusCode = 202;
+			$this->_statusCode = 204;
 	}
 }
